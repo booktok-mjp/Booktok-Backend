@@ -41,4 +41,19 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
+
+    public Optional<User> loginUser(String email, String password){
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+
+        if(userOptional.isEmpty()){
+            throw new IllegalStateException("Must sign up before logging in...");
+        }
+
+        if(userOptional.get().getPassword().equals(password)){
+            System.out.println("User has logged in successfully...");
+            return userOptional;
+        }
+
+        return Optional.empty();
+    }
 }
