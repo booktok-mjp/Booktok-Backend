@@ -15,6 +15,7 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     @JsonIgnore
     private List<Book> authoredBooks;
+    private String imgUrl;
 
     public Author() {
     }
@@ -44,5 +45,13 @@ public class Author {
 
     public void setAuthoredBooks(List<Book> authoredBooks) {
         this.authoredBooks = authoredBooks;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
